@@ -65,7 +65,7 @@ function getRecommendedGenres(userGenreRatings) {
 	const recommendedGenres = [];
 	for (genreRating of userGenreRatings) {
 		if (genreRating.totalRatings == 0) continue;
-		const genreScore = ((genreRating.rating / genreRating.totalRatings) * (0.1 * genreRating.totalRatings)).toFixed(5);
+		const genreScore = ((genreRating.rating / genreRating.totalRatings) * (1.1 * genreRating.totalRatings)).toFixed(5);
 		const genreToRecommend = {
 			genreName: genreRating.genreName,
 			genreScore: parseFloat(genreScore)
