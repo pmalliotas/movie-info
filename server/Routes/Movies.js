@@ -113,7 +113,7 @@ router.post('/getRecommendedMovies', Authenticate.verifyToken, async (req, res) 
 	const movieData = await Utils.getMoviesData(movies);
 
 	res.status(200).json({
-		message: "Movie removed from wishlist successfully",
+		message: "Movie data retrieved successfully",
 		movieData
 	});
 });
