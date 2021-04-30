@@ -91,7 +91,7 @@ async function getMoviesData(recommendedGenres) {
 	const data = [];
 	for (genre of recommendedGenres) {
 		for (movie of genre) {
-			const res = await axios.get(`http://www.omdbapi.com/?i=${movie.movieId}&apikey=76cc9b33`);
+			const res = await axios.get(`http://www.omdbapi.com/?i=${movie.movieId}&apikey=${process.env.OMDB_API_KEY}`);
 			data.push(res.data);
 		}
 	}
