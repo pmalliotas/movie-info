@@ -18,9 +18,9 @@ const UserSchema = new mongoose.Schema({
 	movies: [
 		{
 			_id: false,
-			id: String,
+			movieId: String,
 			rating: Number,
-			genre: String,
+			genres: String,
 		},
 	],
 	genreRatings: [

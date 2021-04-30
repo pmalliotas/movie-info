@@ -1,0 +1,35 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('movie-info');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against the correct database and collection.
+db.recommendedmovies.drop();
+
+// Insert a few documents into the sales collection.
+db.recommendedmovies.insertOne(
+  {
+  Action: [{movieId:'tt4912910'},{movieId:'tt1392190'}],
+  Adventure: [{movieId: 'tt0120737'},{movieId:'tt0082971'}],
+  Animation: [{movieId: 'tt0114709'},{movieId:'tt0110357'}],
+  Comedy: [{movieId: 'tt0079470'},{movieId:'tt0443453'}],
+  Crime: [{movieId: 'tt0068646'},{movieId:'tt8946378'}],
+  Documentary: [{movieId: 'tt8760684'},{movieId:'tt3560316'}],
+  Drama: [{movieId: 'tt0033467'},{movieId:'tt0947798'}],
+  Family: [{movieId: 'tt0032138'},{movieId:'tt0089218'}],
+  Fantasy: [{movieId: 'tt3040964'},{movieId:'tt1201607'}],
+  History: [{movieId: 'tt0120679'},{movieId:'tt0112384'}],
+  Horror: [{movieId: 'tt1591095'},{movieId:'tt5052448'}],
+  Music: [{movieId: 'tt0093378'},{movieId:'tt0180241'}],
+  Mystery: [{movieId: 'tt1568346'},{movieId:'tt2267998'}],
+  Romance: [{movieId: 'tt9105014'},{movieId:'tt0034583'}],
+  ScienceFiction: [{movieId: 'tt0076759'},{movieId:'tt0470752'}],
+  Thriller: [{movieId: 'tt2639336'},{movieId:'tt1663202'}],
+  War: [{movieId: 'tt5013056'},{movieId:'tt0120815'}],
+  Western: [{movieId: 'tt0060196'},{movieId:'tt0053221'}],
+  }
+);

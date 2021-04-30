@@ -96,4 +96,26 @@ router.post('/removeMovieFromWishlist', Authenticate.verifyToken, async (req, re
 	});
 });
 
+router.post('/getRecommendedMovies', Authenticate.verifyToken, async (req, res) => {
+	const verificationData = Authenticate.verifyUserToken(req.token);
+	if (!verificationData) {
+		return res.status(401).json({
+			message: 'Could not authenticate user',
+		});
+	}
+
+	const userData = await User.findOne({ email: verificationData.email });
+
+	const recommendedGenres = Utils.getRecommendedGenres(userData.genreRatings);
+	
+	const movies = await Utils.getRecommendedGenresMoviesFromDB(recommendedGenres);
+
+	const movieData = await Utils.getMoviesData(movies);
+
+	res.status(200).json({
+		message: "Movie removed from wishlist successfully",
+		movieData
+	});
+});
+
 module.exports = router;
