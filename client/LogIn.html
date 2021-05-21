@@ -1,0 +1,30 @@
+<html>
+<head>
+      <title>  Login And Registration Form </title>
+      <link rel="stylesheet" href="css/styleL.css">
+    </head>
+    <body>
+        <div class="hero">
+              <div class="form-box">
+
+                <div class="social-icons">
+                  <img src="images/fb.png">
+                  <img src="images/gp.png">
+                </div>
+               </div>
+               <form id="login" class="input-group">
+                 <input type="text" class="input-field" placeholder="Email" required id="loginEmail">
+                 <input type="password" class="input-field" placeholder="Password" required id="loginPassword">
+                 <button type="button" class="submit-btn" id="loginButton"> Log in </button>
+               </form>
+               <form id="register" class="input-group">
+                 <input type="text" class="input-field" placeholder="Email" required id="registerEmail">
+                 <input type="text" class="input-field" placeholder="Username" required id="registerUsername">
+                 <input type="password" class="input-field" placeholder="Password" required id="registerPassword">
+                 <button type="button" class="submit-btn" id="registerButton"> Register </button>
+               </form>
+        </div>
+    </body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/LoginRegister.js"></script>
+    </html>

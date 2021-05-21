@@ -13,7 +13,7 @@ function addRating(userGenreRatings, genreRating) {
 		let genreFound = false;
 		for (genre of userGenreRatings) {
 			if (genre.genreName == seperateGenre) {
-				genre.rating += genreRating.rating;
+				genre.rating += parseInt(genreRating.rating);
 				genre.totalRatings += 1;
 				genreFound = true;
 			}
@@ -36,7 +36,7 @@ function removeRating(userGenreRatings, genreRating) {
 		for (genre of userGenreRatings) {
 			if (genre.totalRatings == 0) continue;
 			if (genre.genreName == seperateGenre) {
-				genre.rating -= genreRating.rating;
+				genre.rating -= parseInt(genreRating.rating);
 				genre.totalRatings -= 1;
 			}
 		}
@@ -84,7 +84,7 @@ async function getRecommendedGenresMoviesFromDB(recommendedGenres) {
 	for (genre of recommendedGenres) {
 		data.push(MovieGenres[0][genre.genreName]);
 	}
-	return data.slice(0,2);
+	return data.slice(0,3);
 }
 
 async function getMoviesData(recommendedGenres) {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MovieInfo</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">MovieInfo</a>
+        </div>
+        <div class="navbar-header">
+          <a href="LogIn.html" class="navbar-brand avatar" id="avatar">
+            <img src="images/avatar.png" alt="">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+    	<div class="jumbotron">
+	    	<h3 class="text-center">Search For Any Movie</h3>
+	    	<form id="searchForm">
+	    		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+	    	</form>
+	    </div>
+      <div class="container">
+        <h3 class="text-center">Recommended Movies</h3>
+        <div id="recommendedMovies" class="row" style="background-color: #CACECF; border-radius: 5px"></div>
+      </div>
+
+      <div class="container">
+        <div id="movies" class="row"></div>
+      </div>
+
+      <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/CheckState.js"></script>
+    <script>
+      window.localStorage.removeItem("movieId")
+      window.localStorage.removeItem("moviescore")
+      window.localStorage.removeItem("moviegenres")
+    </script>
+    </div>
+  </body>
+</html>
