@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>MovieInfo</title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">MovieInfo</a>
-        </div>
-        <div class="navbar-header">
-          <a href="LogIn.html" class="navbar-brand avatar" id="avatar">
-            <img src="images/avatar.png" alt="">
-          </a>
-        </div>
-      </div>
-    </nav>
 
+<head>
+  <meta charset="utf-8">
+  <title>MovieInfo</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
     <div class="container">
-    	<div class="jumbotron">
-	    	<h3 class="text-center">Search For Any Movie</h3>
-	    	<form id="searchForm">
-	    		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
-	    	</form>
-	    </div>
-      <div class="container">
-        <h3 class="text-center">Recommended Movies</h3>
-        <div id="recommendedMovies" class="row" style="background-color: #CACECF; border-radius: 5px"></div>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">MovieInfo</a>
       </div>
-
-      <div class="container">
-        <div id="movies" class="row"></div>
+      <div class="navbar-header">
+        <a href="LogIn.html" class="navbar-brand avatar" id="avatar">
+          <img src="images/avatar.png" alt="">
+        </a>
       </div>
+    </div>
+  </nav>
 
-      <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
+  <div class="container">
+    <div class="jumbotron">
+      <h3 class="text-center">Search For Any Movie</h3>
+      <form id="searchForm">
+        <input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+        <div id="searchMicContainer">
+          <img src="/client/images/mic.png" alt="" style="width: 25px; height: 25px; cursor: pointer" id="speechButton">
+
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <h3 class="text-center">Recommended Movies</h3>
+      <div id="recommendedMovies" class="row recommendedMovies" style="background-color: #CACECF; border-radius: 5px"></div>
+    </div>
+<br><br><br>
+    <div class="container">
+      <div id="movies" class="row results"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/CheckState.js"></script>
@@ -47,7 +51,35 @@
       window.localStorage.removeItem("movieId")
       window.localStorage.removeItem("moviescore")
       window.localStorage.removeItem("moviegenres")
+
+      document.getElementById("speechButton").addEventListener("click", () => {
+        $('#searchText').val("");
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = true;
+
+        recognition.addEventListener('result', e => {
+          const transcript = Array.from(e.results).map(result => result[0]).map(result => result.transcript).join("");
+          console.log(transcript);
+          $('#searchText').val(transcript);
+        })
+        document.getElementById("searchMicContainer").style.boxShadow = '0px 0px 15px 7px #CE0000';
+        document.getElementById("searchMicContainer").style.backgroundColor = '#CE0000';
+
+        recognition.start();
+
+        recognition.addEventListener('end', () => {
+          document.getElementById("searchMicContainer").style.boxShadow = '';
+          document.getElementById("searchMicContainer").style.backgroundColor = '';
+          let searchText = $('#searchText').val();
+          getMovies(searchText);
+          e.preventDefault();
+        })
+
+      })
     </script>
-    </div>
-  </body>
+  </div>
+</body>
+
 </html>

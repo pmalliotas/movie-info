@@ -8,7 +8,11 @@ async function hashPassword(password) {
 }
 
 async function authenticatePassword(password, hashedPassword) {
-	return await bcrypt.compare(password, hashedPassword);
+	try {
+		return await bcrypt.compare(password, hashedPassword);
+	} catch (e) {
+		
+	}
 }
 
 function verifyToken(req, res, next) {
@@ -32,11 +36,15 @@ async function userExists(email) {
 
 async function verifyUser(user) {
 	const userDB = await User.findOne({ email: user.email });
-	const authenticated = await authenticatePassword(
-		user.password,
-		userDB.password
-	);
-	return authenticated;
+	try {
+		const authenticated = await authenticatePassword(
+			user.password,
+			userDB.password
+		);
+		return authenticated;
+	} catch (e) {
+		
+	}
 }
 
 function verifyUserToken(token) {

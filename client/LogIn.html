@@ -6,25 +6,47 @@
     <body>
         <div class="hero">
               <div class="form-box">
-
+                <div  class="button-box">
+                      <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">Log In </button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register </button>
+                    </div>
                 <div class="social-icons">
                   <img src="images/fb.png">
                   <img src="images/gp.png">
                 </div>
-               </div>
-               <form id="login" class="input-group">
+               <form id="loginForm" class="input-group">
                  <input type="text" class="input-field" placeholder="Email" required id="loginEmail">
-                 <input type="password" class="input-field" placeholder="Password" required id="loginPassword">
+                 <input type="password" class="input-field" placeholder="Enter Password" required id="loginPassword">
                  <button type="button" class="submit-btn" id="loginButton"> Log in </button>
                </form>
-               <form id="register" class="input-group">
+               <form id="registerForm" class="input-group">
                  <input type="text" class="input-field" placeholder="Email" required id="registerEmail">
                  <input type="text" class="input-field" placeholder="Username" required id="registerUsername">
                  <input type="password" class="input-field" placeholder="Password" required id="registerPassword">
                  <button type="button" class="submit-btn" id="registerButton"> Register </button>
                </form>
+			   </div>
         </div>
+        <script>
+            var x= document.getElementById("loginForm");
+            var y= document.getElementById("registerForm");
+            var z= document.getElementById("btn");
+
+            function register(){
+              x.style.left = "-400px";
+              y.style.left = "50px";
+              z.style.left = "110px";
+            }
+            function login(){
+              x.style.left = "50px";
+              y.style.left = "450px";
+              z.style.left = "0px";
+            }
+
+        </script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/LoginRegister.js"></script>
+
     </body>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/LoginRegister.js"></script>
     </html>

@@ -1,7 +1,7 @@
 .hero{
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.4)),url(../images/movie.jpg);
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/client/images/movie.jpg);
   background-position: center;
   background-size: cover;
   position: absolute;
@@ -21,7 +21,7 @@
   overflow: hidden;
 }
 .button-box{
-  width: 220px;
+  width:220px;
   margin:35px auto;
   position: relative;
   box-shadow: 0 0 20px 9px #ff61241f;
@@ -31,7 +31,7 @@
 .toggle-btn{
 padding: 10px 30px;
 cursor:pointer;
-background: trasparent;
+background: transparent;
 border:0;
 outline: none;
 position: relative;
@@ -45,7 +45,7 @@ position: relative;
   width:110px;
   height: 100%;
   background: linear-gradient(to right , #ff105f, #ffad06);
-  border-radius:30px;
+  border-radius: 30px;
   transition: .5s;
 }
 
@@ -63,6 +63,7 @@ position: relative;
 }
 
 .input-group{
+  margin-top:70px;
   top:100px;
   position:absolute;
   width: 280px;
@@ -77,7 +78,7 @@ position: relative;
   border-top: 0;
   border-right: 0;
   border-bottom: 1px solid #999;
-  background: trasparent;
+  background: transparent;
 }
 .submit-btn{
   width: 85%;
@@ -101,10 +102,10 @@ position: relative;
    position: absolute;
  }
 
-#login{
+#loginForm{
   left:50px;
 }
 
-#register{
+#registerForm{
   left:450px;
 }
