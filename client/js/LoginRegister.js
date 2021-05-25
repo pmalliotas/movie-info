@@ -8,7 +8,7 @@ document.getElementById("loginButton").addEventListener("click", async () => {
     const response = await login(loginEmail.value, loginPassword.value);
     if (response.status === 200) {
         window.localStorage.setItem("token", response.data.token);
-        alert("Logged In");
+        // alert("Logged In");
         window.location = "index.html";
     } else {
         console.log(response);

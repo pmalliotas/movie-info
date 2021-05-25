@@ -28,58 +28,59 @@
       <form id="searchForm">
         <input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
         <div id="searchMicContainer">
-          <img src="/client/images/mic.png" alt="" style="width: 25px; height: 25px; cursor: pointer" id="speechButton">
+          <img src="images/mic.png" alt="" style="width: 25px; height: 25px; cursor: pointer" id="speechButton">
 
         </div>
       </form>
     </div>
-    <div class="container">
-      <h3 class="text-center">Recommended Movies</h3>
-      <div id="recommendedMovies" class="row recommendedMovies" style="background-color: #CACECF; border-radius: 5px"></div>
+    <div class="container" id="rec">
+      <h3 class="text-center" >Recommended Movies</h3>
+      <div id="recommendedMovies" class="row recommendedMovies" style="background-color: #CACECF; border-radius: 5px">
+      </div>
     </div>
-<br><br><br>
+    <br><br><br>
     <div class="container">
       <div id="movies" class="row results"></div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/CheckState.js"></script>
-    <script>
-      window.localStorage.removeItem("movieId")
-      window.localStorage.removeItem("moviescore")
-      window.localStorage.removeItem("moviegenres")
-
-      document.getElementById("speechButton").addEventListener("click", () => {
-        $('#searchText').val("");
-        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-        const recognition = new SpeechRecognition();
-        recognition.interimResults = true;
-
-        recognition.addEventListener('result', e => {
-          const transcript = Array.from(e.results).map(result => result[0]).map(result => result.transcript).join("");
-          console.log(transcript);
-          $('#searchText').val(transcript);
-        })
-        document.getElementById("searchMicContainer").style.boxShadow = '0px 0px 15px 7px #CE0000';
-        document.getElementById("searchMicContainer").style.backgroundColor = '#CE0000';
-
-        recognition.start();
-
-        recognition.addEventListener('end', () => {
-          document.getElementById("searchMicContainer").style.boxShadow = '';
-          document.getElementById("searchMicContainer").style.backgroundColor = '';
-          let searchText = $('#searchText').val();
-          getMovies(searchText);
-          e.preventDefault();
-        })
-
-      })
-    </script>
   </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/CheckState.js"></script>
+  <script>
+    window.localStorage.removeItem("movieId")
+    window.localStorage.removeItem("moviescore")
+    window.localStorage.removeItem("moviegenres")
+
+    document.getElementById("speechButton").addEventListener("click", () => {
+      $('#searchText').val("");
+      window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      const recognition = new SpeechRecognition();
+      recognition.interimResults = true;
+
+      recognition.addEventListener('result', e => {
+        const transcript = Array.from(e.results).map(result => result[0]).map(result => result.transcript).join("");
+        console.log(transcript);
+        $('#searchText').val(transcript);
+      })
+      document.getElementById("searchMicContainer").style.boxShadow = '0px 0px 15px 7px #CE0000';
+      document.getElementById("searchMicContainer").style.backgroundColor = '#CE0000';
+
+      recognition.start();
+
+      recognition.addEventListener('end', () => {
+        document.getElementById("searchMicContainer").style.boxShadow = '';
+        document.getElementById("searchMicContainer").style.backgroundColor = '';
+        let searchText = $('#searchText').val();
+        getMovies(searchText);
+        e.preventDefault();
+      })
+
+    })
+  </script>
+
 </body>
 
 </html>

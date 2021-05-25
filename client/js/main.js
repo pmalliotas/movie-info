@@ -127,7 +127,8 @@ function getMovie() {
 }
 
 function getRecommendedMovies() {
-	axios
+	if (window.localStorage.getItem("token")) {
+		axios
 		.post('http://localhost:5000/movies/getRecommendedMovies', null, {
 			headers: {
 				Authorization: `Bearer ${window.localStorage.getItem('token')}`,
@@ -148,7 +149,7 @@ function getRecommendedMovies() {
           `;
 			});
 			if (movies.length == 0) {
-				$('#recommendedMovies').html('No available recommended movies yet');
+				$('#rec').hide();
 				return;
 			}
 			$('#recommendedMovies').html(output);
@@ -156,6 +157,8 @@ function getRecommendedMovies() {
 		.catch((err) => {
 			console.log(err);
 		});
+	}
+	
 }
 getRecommendedMovies();
 
